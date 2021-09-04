@@ -104,7 +104,7 @@ class AboutView extends StatelessWidget {
                                 ],
                               ),
                               Text(
-                                "Eduright 1.0.5(2)",
+                                "Eduright 1.1.5 (2)",
                                 style: TextStyle(
                                     fontSize: 18, color: Color(0xFF4E4E4E)),
                               ),
