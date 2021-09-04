@@ -14,6 +14,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileInfoView extends StatefulWidget {
   const ProfileInfoView({Key? key}) : super(key: key);
@@ -239,6 +240,17 @@ class _ProfileInfoViewState extends State<ProfileInfoView> {
                 ],
               ),
             ),
+            Container(
+              child: TextButton(
+                  onPressed: () async {
+                    final url =
+                        "https://edurightinfo.web.app/how-to-earn-badges.html";
+                    if (await canLaunch(url)) {
+                      launch(url);
+                    }
+                  },
+                  child: Text("How can I earn these badges?")),
+            )
           ],
         ),
         builder: (
