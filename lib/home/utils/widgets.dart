@@ -161,6 +161,7 @@ Future<Widget> InfoTabs() async {
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -180,7 +181,7 @@ Future<Widget> InfoTabs() async {
                         errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                       SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       Center(
                         child: Text(
@@ -198,10 +199,12 @@ Future<Widget> InfoTabs() async {
                     height: 8,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      "${infoLi[index]["content"]}",
-                      style: TextStyle(color: standardBlack),
+                    padding: const EdgeInsets.only(left: 40),
+                    child: Container(
+                      child: Text(
+                        "${infoLi[index]["content"]}",
+                        style: TextStyle(color: standardBlack),
+                      ),
                     ),
                   )
                 ],

@@ -13,6 +13,7 @@ class FlashCardContainer extends StatefulWidget {
   final data;
   final bool front;
   final bool edit;
+  final bool addPage;
   final double sizefactor;
   final void Function()? update;
 
@@ -25,6 +26,7 @@ class FlashCardContainer extends StatefulWidget {
       this.minheight = 200,
       this.front = false,
       this.edit = false,
+      this.addPage = false,
       this.sizefactor = 1.0})
       : super(key: key);
 
@@ -77,7 +79,7 @@ class _FlashCardContainerState extends State<FlashCardContainer> {
           children: [
             Expanded(
               flex: 9,
-              child: widget.data["image"] == null
+              child: widget.data["image"] == null || widget.addPage
                   ? Container(
                       alignment: Alignment.center,
                       child: widget.data['latex']

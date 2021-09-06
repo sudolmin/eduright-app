@@ -42,7 +42,10 @@ class _FlashCardsState extends State<FlashCards> {
                     'topicid': topicid,
                     "addedby": username,
                     "edustd": edustd,
-                    "verified": verified
+                    "verified": verified,
+                    'update': () {
+                      setState(() {});
+                    }
                   });
                 },
                 child: Container(

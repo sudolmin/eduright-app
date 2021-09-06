@@ -5,42 +5,53 @@ import 'package:get/get.dart';
 
 import '../../genericWidgets.dart';
 
-class FlashCardUnits extends StatelessWidget {
-  const FlashCardUnits({Key? key}) : super(key: key);
+class Topics extends StatelessWidget {
+  const Topics({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final data = Get.arguments;
-    final subject = data['sub'];
-    final slug = subject['slug'];
+    final unit = data['unit'];
+    final qclass = data['qclass'];
+    final qsubject = data['qsubject'];
+    final unitname = unit['name'];
+    final id = unit['id'];
 
     return Scaffold(
-      appBar: genAppBar(subject['title']),
+      appBar: genAppBar(unitname),
       body: FutureBuilder(
-          future: getFlashUnits(slug),
-          builder: (context, AsyncSnapshot<List> unitListSnap) {
-            if (unitListSnap.connectionState == ConnectionState.none &&
-                unitListSnap.hasData == false) {
+          future: getFlashTopics(id),
+          builder: (context, AsyncSnapshot<List> topicListSnap) {
+            if (topicListSnap.connectionState == ConnectionState.none &&
+                topicListSnap.hasData == false) {
               return Container();
             }
-            if (unitListSnap.connectionState == ConnectionState.waiting) {
+            if (topicListSnap.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CupertinoActivityIndicator(
                   radius: 20,
                 ),
               );
             }
-            final unitList = unitListSnap.data;
+            final topicList = topicListSnap.data;
             return ListView.builder(
-                itemCount: unitList!.length,
+                itemCount: topicList!.length,
                 itemBuilder: (context, index) {
                   return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 8),
                       child: InkWell(
                         onTap: () {
-                          Get.toNamed("/flashcardtopic",
-                              arguments: {"unit": unitList[index]});
+                          data['mode'] == "quiz"
+                              ? Get.toNamed("/quizlistview", arguments: {
+                                  "id": topicList[index]["id"],
+                                  'unit': unit,
+                                  'qsubject': qsubject,
+                                  'qclass': qclass,
+                                  'qtopic': topicList[index]["name"]
+                                })
+                              : Get.toNamed("/flashcardlist",
+                                  arguments: topicList[index]);
                         },
                         child: Container(
                           constraints: BoxConstraints(minHeight: 60),
@@ -67,7 +78,7 @@ class FlashCardUnits extends StatelessWidget {
                               Expanded(
                                   flex: 7,
                                   child: Text(
-                                    '${unitList[index]["name"]}',
+                                    '${topicList[index]["name"]}',
                                     style: TextStyle(fontSize: 18),
                                   )),
                             ],

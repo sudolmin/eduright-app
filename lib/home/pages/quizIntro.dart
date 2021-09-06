@@ -60,26 +60,30 @@ class QuizIntro extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             child: Container(
-                              child: Row(
+                              child: Wrap(
                                 children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: whiteColor,
-                                        border: Border.all(
-                                            color: Colors.lightBlue.shade400),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 2, horizontal: 3),
-                                      child: Text(
-                                        subClassData["class"],
-                                        style: TextStyle(fontSize: 12),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 5),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: whiteColor,
+                                          border: Border.all(
+                                              color: Colors.lightBlue.shade400),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2, horizontal: 3),
+                                        child: Text(
+                                          subClassData["class"],
+                                          style: TextStyle(fontSize: 12),
+                                        ),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 5),
+                                    padding: const EdgeInsets.only(
+                                        left: 5, bottom: 5),
                                     child: Container(
                                       decoration: BoxDecoration(
                                           color: whiteColor,
@@ -93,6 +97,47 @@ class QuizIntro extends StatelessWidget {
                                             vertical: 2, horizontal: 3),
                                         child: Text(
                                           subClassData["sub"],
+                                          style: TextStyle(fontSize: 12),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5, bottom: 5),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: whiteColor,
+                                          border: Border.all(
+                                              color:
+                                                  Colors.yellowAccent.shade200),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2, horizontal: 3),
+                                        child: Text(
+                                          subClassData["unit"],
+                                          style: TextStyle(fontSize: 12),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5, bottom: 5),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: whiteColor,
+                                          border: Border.all(
+                                              color: Colors.redAccent.shade100),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2, horizontal: 3),
+                                        child: Text(
+                                          subClassData["topic"],
                                           style: TextStyle(fontSize: 12),
                                         ),
                                       ),

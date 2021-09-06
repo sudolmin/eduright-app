@@ -40,8 +40,13 @@ class CategoryView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () async {
-                        Get.toNamed("/quizlistview",
-                            arguments: {"sub": subs[index], "class": data});
+                        Get.toNamed("/units", arguments: {
+                          "sub": subs[index],
+                          "class": data,
+                          "mode": "quiz"
+                        });
+                        // Get.toNamed("/quizlistview",
+                        //     arguments: {"sub": subs[index], "class": data});
                       },
                       child: Container(
                         decoration: BoxDecoration(

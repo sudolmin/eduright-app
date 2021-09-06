@@ -90,36 +90,36 @@ class _AddFlashCardState extends State<AddFlashCard> {
                         width: MediaQuery.of(context).size.width * 0.85,
                         child: FlipCard(
                           front: FlashCardContainer(
-                            data: {
-                              'id': 0,
-                              'text': _fl.text['front'],
-                              'latex': _fl.latex['front'],
-                              'image': "",
-                              "by": data['addedby'],
-                              'edustd': data['edustd'],
-                              'likes': data['mode'] == "Edit"
-                                  ? data["initdata"]['likes']
-                                  : 0,
-                              'likedbyuser': data['mode'] == "Edit"
-                                  ? data["initdata"]['likedbyuser']
-                                  : false,
-                            },
-                            sizefactor: 0.70,
-                            colors: FlashGradColors.darkColors[8],
-                            textcolor: Color(0xFFFFEBC6),
-                            front: true,
-                          ),
+                              data: {
+                                'id': 0,
+                                'text': _fl.text['front'],
+                                'latex': _fl.latex['front'],
+                                'image': "",
+                                "by": data['addedby'],
+                                'edustd': data['edustd'],
+                                'likes': data['mode'] == "Edit"
+                                    ? data["initdata"]['likes']
+                                    : 0,
+                                'likedbyuser': data['mode'] == "Edit"
+                                    ? data["initdata"]['likedbyuser']
+                                    : false,
+                              },
+                              sizefactor: 0.70,
+                              colors: FlashGradColors.darkColors[8],
+                              textcolor: Color(0xFFFFEBC6),
+                              front: true,
+                              addPage: true),
                           back: FlashCardContainer(
-                            data: {
-                              'text': _fl.text['back'],
-                              'latex': _fl.latex['back'],
-                              'image': "",
-                              'likes': 0,
-                              'likedbyuser': false
-                            },
-                            colors: FlashGradColors.darkColors[8],
-                            textcolor: Color(0xFFFFEBC6),
-                          ),
+                              data: {
+                                'text': _fl.text['back'],
+                                'latex': _fl.latex['back'],
+                                'image': "",
+                                'likes': 0,
+                                'likedbyuser': false
+                              },
+                              colors: FlashGradColors.darkColors[8],
+                              textcolor: Color(0xFFFFEBC6),
+                              addPage: true),
                         ),
                       ),
                       SizedBox(
@@ -151,6 +151,8 @@ class _AddFlashCardState extends State<AddFlashCard> {
                               } else {
                                 _fl.init();
                                 setState(() {});
+                                final upfunc = data["update"];
+                                upfunc();
                               }
                               Get.snackbar(
                                   "Request Completed", res['response']);

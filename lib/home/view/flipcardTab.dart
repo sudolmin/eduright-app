@@ -77,9 +77,10 @@ class FlipCardTab extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   onTap: () {
-                                    Get.toNamed("/flashcardunit", arguments: {
+                                    Get.toNamed("/units", arguments: {
                                       "sub": subs[index],
-                                      "class": standard
+                                      "class": standard,
+                                      "mode": "flash"
                                     });
                                   },
                                   child: Container(

@@ -368,15 +368,14 @@ Future getQuizSets(subjectSlug) async {
 
     Dio dio = Dio();
 
-    final response =
-        await dio.get(_baseURL + api + "categoryinfo/" + subjectSlug,
-            options: Options(
-              headers: {
-                "Cookie": cookies,
-                "X-CSRFTOKEN": cToken,
-                "Referer": "$_baseURL"
-              },
-            ));
+    final response = await dio.get(_baseURL + api + "topicapi/" + subjectSlug,
+        options: Options(
+          headers: {
+            "Cookie": cookies,
+            "X-CSRFTOKEN": cToken,
+            "Referer": "$_baseURL"
+          },
+        ));
     final respMap = response.data;
     return respMap;
   } on DioError catch (e) {
@@ -396,7 +395,7 @@ Future getQuizData(quizSlug) async {
 
     Dio dio = Dio();
 
-    final response = await dio.get(_baseURL + api + "quizapi/" + quizSlug,
+    final response = await dio.get(_baseURL + api + "quizapi/" + quizSlug + "/",
         options: Options(
           headers: {
             "Cookie": cookies,

@@ -2,7 +2,7 @@ import 'package:eduapp/home/pages/about.dart';
 import 'package:eduapp/home/pages/addflashcard.dart';
 import 'package:eduapp/home/pages/categoryView.dart';
 import 'package:eduapp/home/pages/flashcards.dart';
-import 'package:eduapp/home/pages/flashcardtopic.dart';
+import 'package:eduapp/home/pages/topics.dart';
 import 'package:eduapp/home/pages/quizCompletion.dart';
 import 'package:eduapp/home/pages/quizIntro.dart';
 import 'package:eduapp/home/pages/quizLeaderBoard.dart';
@@ -12,7 +12,7 @@ import 'package:eduapp/login/view/signin.dart';
 import 'package:eduapp/login/view/signup.dart';
 import 'package:get/get.dart';
 
-import 'home/pages/flashcardunit.dart';
+import 'home/pages/unit.dart';
 import 'home/pages/profileInfo.dart';
 import 'home/pages/quizPage.dart';
 import 'login/view/signMain.dart';
@@ -70,12 +70,10 @@ final List<GetPage<dynamic>> routeMap = [
       page: () => QLeaderBoard(),
       transition: Transition.rightToLeft),
   GetPage(
-      name: '/flashcardunit',
-      page: () => FlashCardUnits(),
-      transition: Transition.rightToLeft),
+      name: '/units', page: () => Units(), transition: Transition.rightToLeft),
   GetPage(
-      name: '/flashcardtopic',
-      page: () => FlashCardTopic(),
+      name: '/topics',
+      page: () => Topics(),
       transition: Transition.rightToLeft),
   GetPage(
       name: '/flashcardlist',

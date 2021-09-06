@@ -13,8 +13,14 @@ class QuizListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = Get.arguments;
-    final subjectSlug = data['sub']['slug'];
-    final subClassData = {'sub': data['sub']['title'], 'class': data['class']};
+    final id = data['id'];
+    final subClassData = {
+      'sub': data['qsubject'],
+      'class': data['qclass'],
+      'unit': data['unit']['name'],
+      'topic': data['qtopic']
+    };
+    print(subClassData);
     return Scaffold(
         body: FutureBuilder(
             builder: (context, AsyncSnapshot<Map> quizSnapshot) {
@@ -30,11 +36,11 @@ class QuizListView extends StatelessWidget {
                 );
               }
 
-              final subjectData = quizSnapshot.data;
-              final quizSetList = subjectData!["categoryquizset"];
+              final topicData = quizSnapshot.data;
+              final quizSetList = topicData!["topicquizset"];
               return Scaffold(
                 backgroundColor: pagesBackgroundColor,
-                appBar: genAppBar(subjectData['title']),
+                appBar: genAppBar(topicData['topic_Name']),
                 body: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: quizSetList.length != 0
@@ -134,10 +140,10 @@ class QuizListView extends StatelessWidget {
                               ),
                             );
                           })
-                      : Center(child: Text("No Quiz Assigned to this Batch.")),
+                      : Center(child: Text("No Quiz Assigned for this topic.")),
                 ),
               );
             },
-            future: handleQuizListQuery(subjectSlug)));
+            future: handleQuizListQuery(id.toString())));
   }
 }
